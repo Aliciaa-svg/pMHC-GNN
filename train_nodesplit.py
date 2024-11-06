@@ -18,7 +18,7 @@ print(f"Device: '{device}'")
 parser = argparse.ArgumentParser(description='train_nodesplit')
 parser.add_argument('--seed', type=int, default=42, help='seed')
 parser.add_argument('--hidden_dim', type=int, default=128, help='hidden channel')
-parser.add_argument('--model', type=str, default='cnn', help='model type')
+parser.add_argument('--seq_model', type=str, default='cnn', help='model type')
 parser.add_argument('--edge_weight', type=bool, default=False, help='edge weight')
 parser.add_argument('--edge_weight_scale', type=bool, default=False, help='edge weight')
 parser.add_argument('--disjoint_rate', type=float, default=0, help='disjoint training rate')
@@ -78,7 +78,7 @@ train_loader = LinkNeighborLoader(
     shuffle=True
 )
 meta = data.metadata()
-if args.model == 'cnn':
+if args.seq_model == 'cnn':
     model = ModelattnFuse(train_data, hidden_channels=args.hidden_dim)
 model = model.to(device)
 optimizer = torch.optim.AdamW(model.parameters(), lr=0.001)
