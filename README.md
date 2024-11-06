@@ -24,3 +24,5 @@ The resulting initial embeddings will be saved to `data/` directory.
 Run each code block in `relation.ipynb` sequentially.
 
 The structures for the peptide-peptide, peptide-MHC, and MHC-MHC networks will be constructed and saved to `/data` directory.
+
+## 3. Train a prediction model
