@@ -22,6 +22,7 @@ parser.add_argument('--model', type=str, default='cnn', help='model type')
 parser.add_argument('--edge_weight', type=bool, default=False, help='edge weight')
 parser.add_argument('--edge_weight_scale', type=bool, default=False, help='edge weight')
 parser.add_argument('--disjoint_rate', type=float, default=0, help='disjoint training rate')
+parser.add_argument('--val_rate', type=float, default=0.1, help='validation')
 args = parser.parse_args()
 fix_seed=args.seed
 random.seed(fix_seed)
@@ -61,7 +62,7 @@ transform = NormalizeFeatures()
 data = transform(data)
 scale = int(edge_neg.shape[1] / (data['mhc', 'bind', 'pt'].edge_index.shape[1])) 
 data = T.ToUndirected()(data)
-transform = RandomLinkSplitNeg(edge_neg, disjoint_train_ratio=args.disjoint_rate, num_val=0.1, num_test=0.0, edge_types=['bind'], add_negative_train_samples=False, )
+transform = RandomLinkSplitNeg(edge_neg, disjoint_train_ratio=args.disjoint_rate, num_val=args.val_rate, num_test=0.0, edge_types=['bind'], add_negative_train_samples=False, )
 train_data, val_data, test_data = transform(data)
 edge_label_index = train_data['mhc', 'bind', 'pt'].edge_label_index
 edge_label = train_data['mhc', 'bind', 'pt'].edge_label
