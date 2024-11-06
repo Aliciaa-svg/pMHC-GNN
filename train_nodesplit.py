@@ -23,6 +23,9 @@ parser.add_argument('--edge_weight', type=bool, default=False, help='edge weight
 parser.add_argument('--edge_weight_scale', type=bool, default=False, help='edge weight')
 parser.add_argument('--disjoint_rate', type=float, default=0, help='disjoint training rate')
 parser.add_argument('--val_rate', type=float, default=0.1, help='validation')
+parser.add_argument('--max_epoch', type=int, default=300, help='max training epoch')
+parser.add_argument('--early_stop', type=int, default=20, help='early stop')
+parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
 args = parser.parse_args()
 fix_seed=args.seed
 random.seed(fix_seed)
@@ -81,15 +84,15 @@ meta = data.metadata()
 if args.seq_model == 'cnn':
     model = ModelattnFuse(train_data, hidden_channels=args.hidden_dim)
 model = model.to(device)
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.001)
+optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
 scheduler = ReduceLROnPlateau(optimizer, 'min', factor=0.5, patience=100)
 val_best = 1e100
 bundle = []
-epoch = 500
+epoch = args.max_epoch
 early_stop = 0
 test_best = 0
 for epoch in tqdm.tqdm(range(1, epoch+1)):
-    if early_stop >= 20: break
+    if early_stop >= args.early_stop: break
     total_loss = total_examples = 0
     total_loss_reg = 0
     model.train()
