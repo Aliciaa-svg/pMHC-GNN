@@ -11,3 +11,6 @@
 * numpy
 
 **Usage**
+```bash
+python -u train_nodesplit.py --model 'cnn' --disjoint_rate 0.4
+```
