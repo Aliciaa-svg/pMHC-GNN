@@ -1,4 +1,5 @@
 # pMHC-GNN
+pMHC-GNN is a heterogeneous Graph Neural Networks-based framework that integrates both sequence and structural information for peptide-MHC binding prediction.
 
 ## 0. Installation
 ```
