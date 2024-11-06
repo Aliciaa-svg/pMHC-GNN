@@ -24,7 +24,7 @@ numpy
 ## 1. Encode raw peptide and MHC sequences
 Run each code block in `encode.ipynb` sequentially.
 
-The raw peptide and MHC sequences are encoded using a pretrained protein language model. 
+The raw peptide and MHC sequences are encoded using a pretrained protein language model [unikei/bert-base-proteins](https://huggingface.co/unikei/bert-base-proteins). 
 
 The resulting initial embeddings will be saved to `data/` directory.
 
