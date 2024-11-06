@@ -1,6 +1,13 @@
 # pMHC-GNN
 pMHC-GNN is a heterogeneous Graph Neural Networks-based framework that integrates both sequence and structural information for peptide-MHC binding prediction.
 
+## File description
+* `encode.ipynb` encode raw peptide and MHC sequences using a pretrained protein language model.
+* `relation.ipynb` construct peptide-peptide, peptide-MHC, and MHC-MHC networks based on the provided dataset and the initial embeddings of peptides and MHCs.
+* `link_split.py` code for spliting the graph into training/validation/testing subgraphs.
+* `model.py` code for model structure.
+* `train_nodesplit.py` main code for training the model.
+
 ## 0. Installation
 ```
 torch
