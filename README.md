@@ -29,8 +29,13 @@ The structures for the peptide-peptide, peptide-MHC, and MHC-MHC networks will b
 ```
 python -u train_nodesplit.py \
     --seed 16 \
+    --hidden_dim 128 \
     --seq_model 'cnn' \
     --disjoint_rate 0.4 \
-    --val_rate 0.1
+    --val_rate 0.1 \
+    --max_epoch 300 \
+    --early_stop 20 \
+    --lr 0.001
 ```
-
+The `seq_model` argument specifies the sequence encoder to be used. The `disjoint_rate` argument defines the ratio of edges for supervised learning.
+The `val_rate` argument specifies the ratio of edges for validation, and if validation performance does not improve within `early_stop` epochs, the training process will be halted. 
