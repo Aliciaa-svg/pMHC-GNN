@@ -23,7 +23,7 @@ The resulting initial embeddings will be saved to `data/` directory.
 ## 2. Graph construction
 Run each code block in `relation.ipynb` sequentially.
 
-The structures for the peptide-peptide, peptide-MHC, and MHC-MHC networks will be constructed and saved to `/data` directory.
+The structures for the peptide-peptide, peptide-MHC, and MHC-MHC networks will be constructed and saved to `data/` directory.
 
 ## 3. Train a prediction model
 ```
@@ -38,4 +38,6 @@ python -u train_nodesplit.py \
     --lr 0.001
 ```
 The `seq_model` argument specifies the sequence encoder to be used. The `disjoint_rate` argument defines the ratio of edges for supervised learning.
-The `val_rate` argument specifies the ratio of edges for validation, and if validation performance does not improve within `early_stop` epochs, the training process will be halted. 
+The `val_rate` argument specifies the ratio of edges for validation, and if validation performance does not improve within `early_stop` epochs, the training process will be halted.
+
+After the training process completes, the prediction model will be saved to `ckpt/` directory
