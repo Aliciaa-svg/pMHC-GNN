@@ -49,3 +49,6 @@ The `seq_model` argument specifies the sequence encoder to be used. The `disjoin
 The `val_rate` argument specifies the ratio of edges for validation, and if validation performance does not improve within `early_stop` epochs, the training process will be halted.
 
 After the training process completes, the prediction model will be saved to `ckpt/` directory
+
+**Checkpoint**
+[checkpoint](https://drive.google.com/file/d/1qxTOZQomoqfzk3TVqH1rkz06u3_66Npy/view?usp=sharing)
